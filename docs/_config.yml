@@ -8,7 +8,7 @@
 # Book settings
 title: Forest Area Classifier
 author: DEC Data Group
-logo: images/wb_logo_large.png
+logo: docs/images/wb_logo_large.png
 copyright: "2025"
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 exclude_patterns: [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
@@ -59,7 +59,7 @@ launch_buttons:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/bennyistanto/forest-area-classifier  # Online location of your book
-  path_to_book: book  # Optional path to your book, relative to the repository root
+  #path_to_book: book  # Optional path to your book, relative to the repository root
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Define the name of the latex output file for PDF builds
@@ -70,13 +70,13 @@ latex:
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:
-  - bibliography.bib
+  - docs/bibliography.bib
 
 #######################################################################################
 # HTML-specific settings
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  favicon: images/favicon.png # A path to a favicon image
+  favicon: docs/images/favicon.png # A path to a favicon image
   home_page_in_navbar: false  # Whether to include your home page in the left Navigation Bar
   use_edit_page_button: true  # Whether to add an "edit this page" button to pages. If `true`, repository information in repository: must be filled in
   use_repository_button: true # Whether to add a link to your repository button

@@ -1,12 +1,12 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 format: jb-book
-root: index
+root: docs/index
 
 parts:
   - caption: CHAPTER
     chapters:
-      - file: 01_introduction
-      - file: 02_data_inventory_sources
-      - file: 03_data_preparation_preprocessing
-      - file: 04_modeling_methodology
+      - file: docs/01_introduction
+      - file: docs/02_data_inventory_sources
+      - file: docs/03_data_preparation_preprocessing
+      - file: docs/04_modeling_methodology
