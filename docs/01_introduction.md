@@ -1,0 +1,14 @@
+# 1 Introduction
+
+Forests are among the most critical natural resources on the planet, providing a host of ecological, social, and economic benefits. They play a pivotal role in biodiversity conservation, carbon sequestration, and the livelihoods of local and indigenous communities. However, forests around the world have been experiencing continuous pressure from land-use change, agricultural expansion, and infrastructure development. In response to these challenges, there is a growing need for robust methods to monitor and quantify forest cover dynamics over time.
+
+Having reliable, **annual** estimates of forest area is essential for a range of purposes. One key application is **Measurement, Reporting, and Verification (MRV)**, particularly in the context of climate change mitigation programs. These programs often focus on reducing emissions from deforestation and forest degradation, or on enhancing carbon stocks through sustainable forest management. Accurate annual forest area data can help stakeholders track progress, enforce policies, and report results to international bodies and agreements.
+
+In recent years, remote sensing technologies have advanced significantly, making it possible to produce consistent forest cover maps at various spatial and temporal resolutions. By leveraging satellite imagery, global land-cover products, and machine learning methods (such as random forests), practitioners can develop robust workflows for creating yearly forest classifications. These workflows typically involve:
+
+1. **Identifying suitable input data** (e.g., tree canopy cover rasters, land-cover maps, satellite-derived vegetation indices, and ancillary information such as topography).
+2. **Building training datasets** based on a reference land-cover product or on-the-ground observations.
+3. **Applying spatially aware machine learning** to account for environmental heterogeneity and reduce biases in model validation.
+4. **Producing annual classifications** and performing post-processing steps (e.g., smoothing, temporal consistency checks) to ensure coherent forest change monitoring across time.
+
+This JupyterBook documents the overall process of deriving annual forest maps from Earth observation data using a reproducible and transparent approach. It includes detailed explanations of data sources, preprocessing techniques, model training and validation, and the strategies for extending the classification to multiple years. The ultimate aim is to provide a clear and adaptable reference so that others can replicate or tailor the methodology for their own MRV needs—regardless of the specific region or forest type under analysis.
