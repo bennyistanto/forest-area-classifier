@@ -38,13 +38,28 @@ All the data below has been harmonized into 100m spatial resolution,  to make it
    - **MODIS VCF (2000–2020)**: Vegetation Continuous Fields (percent tree, percent non-tree vegetation, etc.).  
    - **MODIS Land Cover Dynamics (MCD12Q2, 2001–2023)**: Phenological metrics such as green-up, peak, and senescence dates.  
 
-7. **Primary Productivity & Climate Data**  
+7. **Vegetation Productivity**  
    - **MODIS LAI/FPAR (MCD15A3H, 2003–2023)**: Leaf Area Index and Fraction of Photosynthetically Active Radiation.  
    - **MODIS GPP/NPP (MOD17A3HGF & MYD17A3HGF, 2001–2023)**: Gross and Net Primary Production estimates at 500m resolution.
 
 8. **Historical & Annual Forest Change**  
    - **JRC TMF Annual Changes (1990–2023)**: Classification of undisturbed vs. degraded tropical moist forest, deforestation, regrowth.  
    - **Global 30m Land Cover Change (GLC_FCS30D, 1985–2022)**: Five-year maps (1985, 1990, 1995) and yearly maps (2000–2022) covering various land-cover classes.
+
+9. **Climate and Soil Variables**
+   - **CHIRPS Annual Precipitation (1981-2023)**: Annual precipitation at 0.05 deg spatial resolution.
+   - **ERA5-Land Air Temperature**: Minimum, mean, and maximum annual temperature at 0.1 deg spatial resolution.
+   - **FLDAS Soil Moisture**: Volumetric soil moisture for multiple depths (0-10cm, 10-40cm, 40-100cm, 100-200cm).
+   - **HiHydroSoil Data**:
+     - **Hydrologic Soil Groups**: Soil drainage classification.
+     - **Saturated Hydraulic Conductivity (Ksat)**: Water movement through saturated soil.
+     - **Organic Matter Content (ORMC)**: Soil organic matter concentration.
+
+10. **Distance/Accessibility**
+   - **Derived Hydrological Features**:
+     - **Distance to Water Bodies (Copernicus DEM Water Body)**: Euclidean distance to nearest water source.
+   - **Derived Network Features**:
+     - **Distance to Road (OSM)**: Euclidean distance to nearest road network.
 
 This summary provides an at-a-glance reference for each dataset. In the following **Section 2.2**, we will detail the classification legends, spatial resolutions, file naming conventions, and references for these products.
 
@@ -65,7 +80,7 @@ When comparing changes between two time periods, the year component may include 
 1. **BNETD Land Cover**
 
     Available for year 2020, the pixel has value and translated into below information: 
-    
+
     | Value | Description |
     |--------|-------------|
     | 1 | Dense forest (Forêt dense) |
@@ -96,11 +111,12 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://africageoportal.maps.arcgis.com/home/user.html?user=bnetdcignCI
     Filename: 
     - `CIV_BNETD_LandCover_2020.tif`
+<br>
 
 2. **Global Forest Management Dataset**
 
     Available for year 2015, the pixel has value and translated into below information:
-    
+
     | Value | Description |
     |--------|-------------|
     | 0 | Naturally regenerating forest without any signs of management, including primary forests |
@@ -109,11 +125,12 @@ When comparing changes between two time periods, the year component may include 
     | 3 | Plantation forests (rotation time up to 15 years) |
     | 4 | Oil palm plantations |
     | 5 | Agroforestry |
-    
+
     Data Reference: https://gee-community-catalog.org/projects/gfm_100/
     Reference: https://www.nature.com/articles/s41597-022-01332-3
     Filename: 
     - `CIV_GFM_ForestManagementTypes_2015.tif`
+<br>      
 
 3. **Global Forest Classification for IPCC Aboveground Biomass Tier 1 Estimates, V1**
 
@@ -129,6 +146,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1038/s41597-024-03930-9
     Filename: 
     - `CIV_ORNL_ForestTypes_2020.tif`
+<br>
 
 4. **Global 4-class PALSAR-2/PALSAR Forest/Non-Forest Map**
 
@@ -145,6 +163,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1016/j.rse.2014.04.014
     Filename: 
     - `CIV_JAXAFNF_ForestCover_{yyyy}.tif` where yyyy = 2017-2021
+<br>
 
 5. **EC JRC global map of forest cover 2020, V2**
 
@@ -158,6 +177,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: http://data.europa.eu/89h/e554d6fb-6340-45d5-9309-332337e5bc26
     Filename: 
     - `CIV_JRC_ForestCover_2020.tif`
+<br>
 
 6. **EC JRC global map of forest types 2020**
 
@@ -173,6 +193,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: http://data.europa.eu/89h/037ca376-ba92-49db-a8f7-0c277c1e5436
     Filename: 
     - `CIV_JRC_ForestSubtypes_2020.tif`
+<br>
 
 7. **NASA Global Forest Cover Change (GFCC) Tree Cover Multi-Year Global 30m**
 
@@ -186,6 +207,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1080/17538947.2013.786146
     Filename: 
     - `CIV_NASAGFCC_TreeCanopyCover_{yyyy}.tif` where yyyy = 2000, 2005, 2010, 2015
+<br>
 
 8. **Hansen Global Forest Change v1.11 (2000-2023)**
 
@@ -201,6 +223,7 @@ When comparing changes between two time periods, the year component may include 
     Filename: 
     - `CIV_Hansen_TreeCover_2000.tif`
     - `CIV_Hansen_ForestLoss_{yyyy}.tif` where yyyy = 2001-2023
+<br>
 
 9. **UMD/GLAD Primary Humid Tropical Forests**
 
@@ -214,6 +237,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1088/1748-9326/aacd1c
     Filename: 
     - `CIV_GLAD_PrimaryHumidTropicalForest_2001.tif`
+<br>
 
 10. **UMD/GLAD Global Forest Canopy Height, 2019**
 
@@ -227,6 +251,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1016/j.rse.2020.112165
     Filename: 
     - `CIV_GLADGEDI_ForestCanopyHeight_2019.tif`
+<br>
 
 11. **UMD/GLAD Global Forest Canopy Height, 2000 and 2020**
 
@@ -261,6 +286,7 @@ When comparing changes between two time periods, the year component may include 
     - `CIV_GLAD_ForestHeightGain_2000_2020.tif`
     - `CIV_GLAD_ForestHeightLoss_2000_2020.tif`
     - `CIV_GLAD_ForestDynamicType_2000_2020.tif`
+<br>
 
 12. **Copernicus DEM GLO-30: Global 30m Digital Elevation Model**
 
@@ -280,6 +306,7 @@ When comparing changes between two time periods, the year component may include 
     - `CIV_CopDEM_SlopeDegrees.tif`
     - `CIV_CopDEM_SlopePercent.tif`
     - `CIV_CopDEM_Aspect.tif`
+<br>
 
 13. **Meta/WRI High Resolution 1m Global Canopy Height Maps**
 
@@ -293,6 +320,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://www.sciencedirect.com/science/article/pii/S003442572300439X
     Filename: 
     - `CIV_MetaWRI_CanopyHeight_2020.tif`
+<br>
 
 14. **ETH Global Sentinel-2 10m Canopy Height (2020)**
 
@@ -306,6 +334,7 @@ When comparing changes between two time periods, the year component may include 
      Reference: https://doi.org/10.48550/arXiv.2204.08322
      Filename: 
      - `CIV_ETH_CanopyHeight_2020.tif`
+<br>
 
 15. **Planet High resolution map of African tree cover**
 
@@ -319,6 +348,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1038/s41467-023-37880-4
     Filename: 
     - `CIV_Planet_TreeCover_2019.tif`
+<br>
 
 16. **MCD12Q1.061 MODIS Land Cover Type Yearly Global 500m**
 
@@ -475,6 +505,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.5067/MODIS/MCD12Q1.061
     Filename: 
     - `CIV_MCD12Q1_LandCover_{land_cover_version}_class_{yyyy}.tif` where `land_cover_version` = IGBP, UMD, LAI, BGC, PFT, LCCS1, LCCS2 and LCCS3. And `yyyy` = 2001-2023
+<br>
 
 17. **Landsat Collection 2 Tier 1 Level 2 Annual NDVI Composite**
 
@@ -488,6 +519,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: 
     Filename: 
     - `CIV_Landsat_NDVI_{yyyy}.tif` where `yyyy` = 1984-2024
+<br>
 
 18. **MOD44B.006 Terra Vegetation Continuous Fields Yearly Global 250m**
 
@@ -503,6 +535,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.5067/MODIS/MOD44B.061
     Filename: 
     - `CIV_MOD44B_VCF{vcf_name}_{yyyy}.tif` where `vcf_name` = Percent_pixel_tree_canopy, Percent_pixel_nontree_vegetation and Percent_pixel_not_vegetated. And `yyyy` = 2000-2020
+<br>
 
 19. **MCD12Q2.006 Land Cover Dynamics Yearly Global 500m**
 
@@ -536,6 +569,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.5067/MODIS/MOD44B.061
     Filename: 
     - `CIV_MCD12Q2_LCD{description}_{yyyy}.tif` where `description` = NumCycles, Greenup1, Greenup2, MidGreenup1, MidGreenup2, Peak1, Peak2, Maturity1, Maturity2, MidGreendown1, MidGreendown2, Senescence1, Senescence2, Dormancy1, Dormancy2, EVIMinimum1, EVIMinimum2, EVIAmplitude1, EVIAmplitude2, EVIArea1, and EVIArea2. And `yyyy` = 2001-2023
+<br>
 
 20. **MCD15A3H.061 MODIS Leaf Area Index/FPAR 4-Day Global 500m**
 
@@ -551,6 +585,7 @@ When comparing changes between two time periods, the year component may include 
     Filename: 
     - `CIV_MCD15A3H_FPAR_{yyyy}.tif` where `yyyy` = 2003-2023
     - `CIV_MCD15A3H_LAI_{yyyy}.tif` where `yyyy` = 2003-2023
+<br>
 
 21. **MOD17A3HGF.061 and MYD17A3HGF.061: Terra and Aqua Net Primary Production Gap-Filled Yearly Global 500m**
 
@@ -566,6 +601,7 @@ When comparing changes between two time periods, the year component may include 
     Filename: 
     - `CIV_MXD17A3HGF_GrossPrimaryProductivity_{yyyy}.tif` where `yyyy` = 2003-2023
     - `CIV_MXD17A3HGF_NetPrimaryProductivity_{yyyy}.tif` where `yyyy` = 2003-2023
+<br>
 
 22. **JRC Tropical Moisture Forest, Annual Change 1990-2023**
 
@@ -584,6 +620,7 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.1126/sciadv.abe1603
     Filename: 
     - `CIV_TMF_AnnualChanges_{yyyy}.tif` where `yyyy` = 1990-2023
+<br>
 
 23. **Global 30m Land Cover Change Dataset (1985-2022) GLC_FCS30D**
 
@@ -632,4 +669,120 @@ When comparing changes between two time periods, the year component may include 
     Reference: https://doi.org/10.5194/essd-16-1353-2024
     Filename: 
     - `CIV_GLC_FCS30D_{yyyy}.tif` where `yyyy` = 1985, 1990, 1995, 2000-2022.
+<br>
 
+24. **CHIRPS, Annual Precipitation 1981-2023**
+
+    Available for year 1981-2023, the pixel has annual value and translated into below information: 
+    
+    | Name | Units |
+    |--------|-------------|
+    | precipitation | mm |
+
+    Data Reference: https://developers.google.com/earth-engine/datasets/catalog/UCSB-CHG_CHIRPS_PENTAD
+    Reference: https://www.nature.com/articles/sdata201566
+    Filename: 
+    - `CIV_CHIRPS_Precipitation_{yyyy}.tif` where `yyyy` = 1981-2023
+<br>
+
+25. **ERA5-Land, Annual Temperature 1981-2023**
+
+    Available for year 1981-2023, the pixel has annual value and translated into below information: 
+    
+    | Name | Units |
+    |--------|-------------|
+    | min_temperature | degC |
+    | mean_temperature | degC |
+    | max_temperature | degC |
+
+    Data Reference: https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_MONTHLY_AGGR
+    Reference: https://doi.org/10.24381/cds.68d2bb30
+    Filename: 
+    - `CIV_ERA5Land_Temperature_{yyyy}.tif` where `yyyy` = 1981-2023
+<br>
+
+26. **FLDAS, Annual Soil Moisture 1982-2023**
+
+    Available for year 1982-2023, the pixel has annual value and translated into below information: 
+    
+    | Name | Units | Description  |
+    |--------|-------------|----|
+    | SoilMoi00_10cm_tavg | Volume fraction | Soil moisture (0 - 10 cm underground) |
+    | SoilMoi10_40cm_tavg | Volume fraction | Soil moisture (10 - 40 cm underground) |
+    | SoilMoi40_100cm_tavg | Volume fraction | Soil moisture (40 - 100 cm underground) |
+    | SoilMoi100_200cm_tavg | Volume fraction | Soil moisture (100 - 200 cm underground) |
+
+    Data Reference: https://developers.google.com/earth-engine/datasets/catalog/NASA_FLDAS_NOAH01_C_GL_M_V001
+    Reference: https://doi.org/10.5067/5NHC22T9375G
+    Filename: 
+    - `CIV_FLDAS_SoilMoisture0to10cm_{yyyy}.tif` where `yyyy` = 1982-2023
+    - `CIV_FLDAS_SoilMoisture10to40cm_{yyyy}.tif` where `yyyy` = 1982-2023
+    - `CIV_FLDAS_SoilMoisture40to100cm_{yyyy}.tif` where `yyyy` = 1982-2023
+    - `CIV_FLDAS_SoilMoisture100to200cm_{yyyy}.tif` where `yyyy` = 1982-2023
+<br>
+
+27. **HiHydroSoil, Soil Characteristics**
+
+    The pixel has value and translated into below information: 
+    
+    | Name | Units | Value Range | Description  |
+    |----|----|----|----|
+    | Ksat_0-5cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | Ksat_5-15cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | Ksat_15-30cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | Ksat_30-60cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | Ksat_60-100cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | Ksat_100-200cm_M_250m | cm/d | 0 - 1500 | Saturated hydraulic conductivity is a quantitative measure of a saturated soil's ability to transmit water when subjected to a hydraulic gradient |
+    | ORMC_0-5cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | ORMC_5-15cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | ORMC_15-30cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | ORMC_30-60cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | ORMC_60-100cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | ORMC_100-200cm_M_250m | % | 0 - 50 | The organic matter component of soil, consisting of plant and animal detritus at various stages of decomposition, cells and tissues of soil microbes, and substances that soil microbes synthesize. |
+    | Hydrologic_Soil_Group_250m | A, B, C, D, A/D, B/D, C/D | 1, 2, 3, 4, 14, 24, 34 | Four hydrologic soil groups and three dual hydrologic soil groups are described by the USDA (2009) |
+
+    Data Reference: https://gee-community-catalog.org/projects/hihydro_soil/
+    Reference: https://www.futurewater.eu/projects/hihydrosoil/
+    Filename: 
+    - `CIV_HiHydroSoil_Ksat05cmM250m.tif`
+    - `CIV_HiHydroSoil_Ksat515cmM250m.tif`
+    - `CIV_HiHydroSoil_Ksat1530cmM250m.tif`
+    - `CIV_HiHydroSoil_Ksat3060cmM250m.tif`
+    - `CIV_HiHydroSoil_Ksat60100cmM250m.tif`
+    - `CIV_HiHydroSoil_Ksat100200cmM250m.tif`
+	- `CIV_HiHydroSoil_ORMC05cmM250m.tif`
+    - `CIV_HiHydroSoil_ORMC515cmM250m.tif`
+    - `CIV_HiHydroSoil_ORMC1530cmM250m.tif`
+    - `CIV_HiHydroSoil_ORMC3060cmM250m.tif`
+    - `CIV_HiHydroSoil_ORMC60100cmM250m.tif`
+    - `CIV_HiHydroSoil_ORMC100200cmM250m.tif`
+    - `CIV_HiHydroSoil_HydrologicSoilGroup.tif`
+<br>
+
+28. **OSM Road, Distance to nearest road network**
+
+    The pixel has value and translated into below information: 
+    
+    | Name | Units |
+    |--------|-------------|
+    | distance | meter |
+
+    Data Reference: https://www.openstreetmap.org/
+    Reference: 
+    Filename: 
+    - `CIV_OSM_DistanceToRoad.tif`
+<br>
+
+29. **Copernicus DEM GLO-30: Distance to water bodies**
+
+    The pixel has value and translated into below information: 
+    
+    | Name | Units |
+    |--------|-------------|
+    | distance | meter |
+
+    Data Reference: https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_DEM_GLO30
+    Reference: https://docs.sentinel-hub.com/api/latest/static/files/data/dem/resources/license/License-COPDEM-30.pdf
+    Filename: 
+    - `CIV_CopDEM_DistanceToWater.tif`
+<br>
