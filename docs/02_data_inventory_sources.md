@@ -56,10 +56,13 @@ All the data below has been harmonized into 100m spatial resolution,  to make it
      - **Organic Matter Content (ORMC)**: Soil organic matter concentration.
 
 10. **Distance/Accessibility**
-   - **Derived Hydrological Features**:
-     - **Distance to Water Bodies (Copernicus DEM Water Body)**: Euclidean distance to nearest water source.
-   - **Derived Network Features**:
-     - **Distance to Road (OSM)**: Euclidean distance to nearest road network.
+
+       - **Derived Hydrological Features**:
+         - **Distance to Water Bodies (Copernicus DEM Water Body)**: Euclidean distance to nearest water source.
+
+       - **Derived Network Features**:
+         - **Distance to Road (OSM)**: Euclidean distance to nearest road network.
+
 
 This summary provides an at-a-glance reference for each dataset. In the following **Section 2.2**, we will detail the classification legends, spatial resolutions, file naming conventions, and references for these products.
 
