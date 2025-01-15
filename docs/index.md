@@ -1,4 +1,6 @@
-# Forest Area Classsifier: A Machine Learning Approach Using Earth Observation Data
+# Forest Area Classifier
+
+**A Machine Learning Approach Using Earth Observation Data**
 
 This documentation presents a systematic methodology for forest area classification using machine learning approaches, specifically focusing on Random Forest with Earth Observation (EO) data. Our approach follows the Food and Agriculture Organization (FAO) forest definition guidelines while providing flexibility to adapt to country-specific contexts.
 
