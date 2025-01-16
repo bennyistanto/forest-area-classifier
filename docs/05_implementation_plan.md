@@ -1,4 +1,4 @@
-# Chapter 5: Implementation Plan
+# 5 Implementation Plan
 
 This chapter outlines the practical steps needed to implement a forest classifier using the data sources (Chapter 2) and the modeling concepts (Chapters 3–4). We will focus on the **2020 reference year** for initial training and validation, then discuss how to extend the classification to other years. A thorough understanding of this chapter will guide the subsequent coding steps.
 
