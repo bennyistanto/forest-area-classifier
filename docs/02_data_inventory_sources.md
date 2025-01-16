@@ -507,7 +507,7 @@ When comparing changes between two time periods, the year component may include 
     Data Reference: https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MCD12Q1
     Reference: https://doi.org/10.5067/MODIS/MCD12Q1.061
     Filename: 
-    - `CIV_MCD12Q1_LandCover_{land_cover_version}_class_{yyyy}.tif` where `land_cover_version` = IGBP, UMD, LAI, BGC, PFT, LCCS1, LCCS2 and LCCS3. And `yyyy` = 2001-2023
+    - `CIV_MCD12Q1_LandCover{land_cover_version}_{yyyy}.tif` where `land_cover_version` = IGBP, UMD, LAI, BGC, PFT, LCCS1, LCCS2 and LCCS3. And `yyyy` = 2001-2023
 <br>
 
 17. **Landsat Collection 2 Tier 1 Level 2 Annual NDVI Composite**
@@ -701,7 +701,9 @@ When comparing changes between two time periods, the year component may include 
     Data Reference: https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_MONTHLY_AGGR
     Reference: https://doi.org/10.24381/cds.68d2bb30
     Filename: 
-    - `CIV_ERA5Land_Temperature_{yyyy}.tif` where `yyyy` = 1981-2023
+    - `CIV_ERA5LAND_MeanTemperature_{yyyy}.tif` where `yyyy` = 1981-2023
+    - `CIV_ERA5LAND_MeanTemperature_{yyyy}.tif` where `yyyy` = 1981-2023
+    - `CIV_ERA5LAND_MeanTemperature_{yyyy}.tif` where `yyyy` = 1981-2023
 <br>
 
 26. **FLDAS, Annual Soil Moisture 1982-2023**

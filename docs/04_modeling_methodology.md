@@ -1,6 +1,6 @@
 # 4 Modeling Methodology
 
-This chapter describes the step-by-step approach to building a forest classifier using earth observation data. We focus on **Random Forest** as our primary modeling technique, but the underlying concepts—data labeling, feature engineering, cross-validation, and accuracy assessment—can be applied to other machine learning algorithms as well.
+This chapter describes the step-by-step approach to building a forest classifier using Earth observation data. We focus on **Random Forest** (RF) as our primary modeling technique, but the underlying concepts—data labeling, feature engineering, cross-validation, and accuracy assessment—can be applied to other machine learning algorithms as well.
 
 ---
 
@@ -12,11 +12,13 @@ $$
 y_i \in \{0, 1\},
 $$
 
-where $y_i = 1$ might represent "forest," and $y_i = 0$ might represent "non-forest." 
+where \(y_i = 1\) might represent “forest,” and \(y_i = 0\) might represent “non-forest.”
 
 ### Example Data Sources for Labeling
-- **Reference Land-Cover Map**: If we have a detailed land-cover product for the base year, we can filter out pixels whose reference classes are known to be forest.  
+- **Reference Land-Cover Map**: For instance, BNETD Land Cover (2020). If certain classes (e.g., dense forest, light forest, forest gallery) align with a “forest” definition, then those pixels become the positive class $(y_i=1)$, while other classes become the negative class $(y_i=0)$.  
 - **Field Surveys**: In some projects, local experts or field plots provide ground-truth data for smaller subsets of pixels.
+
+*(See Chapter 5.1.1 for a more specific example of applying BNETD 2020 to derive forest vs. non-forest labels.)*
 
 ---
 
@@ -28,7 +30,7 @@ $$
 \mathbf{x}_i = \bigl[x_{i,1},\, x_{i,2},\, \dots,\, x_{i,M}\bigr] \in \mathbb{R}^M,
 $$
 
-where $M$ is the total number of features. Below are common feature types:
+where $M$ is the total number of features. Below are common feature types (which we expand upon in Chapter 5.1.2):
 
 ### 4.2.1 Spectral Indices (e.g., NDVI)
 
@@ -38,11 +40,11 @@ $$
 \text{NDVI} = \frac{R_{\mathrm{NIR}} - R_{\mathrm{RED}}}{R_{\mathrm{NIR}} + R_{\mathrm{RED}}}.
 $$
 
-NDVI often correlates with vegetation density and health, making it useful for distinguishing forest vs. non-forest.
+NDVI often correlates with vegetation density and health, making it useful for distinguishing forest vs. non-forest or different vegetation types.
 
 ### 4.2.2 Canopy Cover or Height
 
-If canopy cover or canopy height data are available, each pixel can be assigned a numeric value such as:
+If canopy cover or canopy height data are available—e.g., from NASA GFCC, Planet, or GLAD datasets—each pixel can be assigned a numeric value such as:
 
 $$
 x_{i,\text{canopy}} = \text{Canopy\_Cover}_i \quad (\text{in \%}), 
@@ -54,11 +56,11 @@ $$
 x_{i,\text{height}} = \text{Canopy\_Height}_i \quad (\text{in meters}).
 $$
 
-Areas with high canopy cover or taller trees generally indicate forest.
+Areas with higher canopy cover or taller trees generally indicate forest, aligning well with FAO definitions involving minimum height and canopy cover thresholds.
 
 ### 4.2.3 Topographic Data
 
-Derived from a Digital Elevation Model (DEM):
+Derived from a Digital Elevation Model (DEM), for example, **Copernicus DEM GLO-30**:
 
 $$
 x_{i,\text{elev}} = \text{Elevation}_i,
@@ -68,7 +70,13 @@ x_{i,\text{slope}} = \text{Slope}_i,
 x_{i,\text{aspect}} = \text{Aspect}_i.
 $$
 
-These may help differentiate forest types that favor certain altitudes or topographies.
+These may help differentiate forest types that favor certain altitudes or topographies (e.g., swamp forests in low-lying areas).
+
+### 4.2.4 Soil, Climate & Distance Layers (Optional)
+
+- **Soil Properties** (e.g., soil moisture, organic matter, hydrologic soil group).  
+- **Climate Variables** (annual precipitation, temperature) for distinguishing moist vs. dry forest zones.  
+- **Distance to Roads/Water** to capture anthropogenic influence or hydrological regimes.
 
 ---
 
@@ -88,7 +96,7 @@ where $p_c$ is the fraction of samples belonging to class $c$. The tree algorith
 
 ### 4.3.2 Forest Aggregation
 
-To predict the label $y$ for a new feature vector $\mathbf{x}$, each decision tree $h_t(\mathbf{x})$ outputs a predicted label. The Random Forest then aggregates these "votes" by majority:
+To predict the label $y$ for a new feature vector $\mathbf{x}$, each decision tree $h_t(\mathbf{x})$ outputs a predicted label. The Random Forest then aggregates these “votes” by majority:
 
 $$
 \hat{y}(\mathbf{x}) = \text{mode}\bigl\{h_1(\mathbf{x}),\, h_2(\mathbf{x}),\, \dots,\, h_T(\mathbf{x})\bigr\}.
@@ -102,7 +110,7 @@ Common hyperparameters for Random Forest include:
 - $\text{max\_features}$: Number (or fraction) of features considered at each split
 - $\text{min\_samples\_leaf}$: Minimum samples required in a leaf
 
-We can perform **grid-search** or **random-search** on these hyperparameters to find an optimal combination.
+We can perform **grid-search** or **random-search** on these hyperparameters to find an optimal combination. In **Chapter 5**, we discuss an example param-grid or Bayesian optimization approach for refining these values under a spatial cross-validation scheme.
 
 ---
 
@@ -116,7 +124,7 @@ $$
 \text{CV Score} = \frac{1}{k} \sum_{j=1}^k \text{Accuracy}\bigl(\text{Model}_{-j},\, \text{Fold}_j\bigr),
 $$
 
-where $\text{Model}_{-j}$ is the model trained without fold $j$, and $\text{Fold}_j$ is the test fold.
+where \(\text{Model}_{-j}\) is the model trained without fold \(j\), and \(\text{Fold}_j\) is the test fold.
 
 ### 4.4.2 Confusion Matrix and Derived Metrics
 
@@ -137,7 +145,7 @@ where:
 
 From here:
 
-- **Overall Accuracy** ($\text{OA}$):
+- **Overall Accuracy** $(\text{OA})$:
 
   $$
   \text{OA} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
@@ -161,6 +169,8 @@ From here:
   F_1 = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
   $$
 
+*(See Chapter 5.3.1 for details on how we’ll compute and interpret these metrics for the 2020 reference data.)*
+
 ### 4.4.3 Model Calibration
 
 If we require probabilistic outputs (e.g., the probability a pixel is forest), we may apply calibration to align the raw RF probabilities with observed frequencies. For a set of predicted probabilities $\hat{p}_i$:
@@ -169,19 +179,19 @@ $$
 \hat{p}'_i = \text{calibration\_model}\bigl(\hat{p}_i\bigr).
 $$
 
-Methods like **Platt Scaling** or **Isotonic Regression** can be used based on out-of-fold predictions, ensuring more reliable probability estimates.
+Methods like **Platt Scaling** or **Isotonic Regression** can be used based on out-of-fold predictions, ensuring more reliable probability estimates for downstream use (e.g., risk analysis or thresholding).
 
 ---
 
 ## 4.5 Putting It All Together
 
-1. **Data Labeling**: Identify reference forest vs. non-forest pixels.  
-2. **Feature Extraction**: Compute NDVI, canopy metrics, terrain attributes, etc.  
-3. **Train**: Fit a Random Forest on labeled samples. Perform hyperparameter tuning with spatial cross-validation.  
-4. **Validation**: Evaluate the model using a confusion matrix, accuracy, $F_1$ score, etc. Optionally apply calibration.  
-5. **Inference**: Use the final model to classify every pixel (forest vs. non-forest) for each target year or region.  
+1. **Data Labeling**: Identify reference forest vs. non-forest pixels (e.g., from BNETD 2020 classes).  
+2. **Feature Extraction**: Compute NDVI, canopy metrics, DEM-based terrain attributes, soil/climate layers, and/or distance features.  
+3. **Train**: Fit a Random Forest on labeled samples, using hyperparameter tuning and spatial cross-validation.  
+4. **Validation**: Evaluate the model using confusion matrix metrics (Accuracy, Recall, $F_1$, etc.). Optionally apply probability calibration.  
+5. **Inference**: Use the final model to classify every pixel (forest vs. non-forest) for each target year or region of interest.  
 6. **Post-Processing** (if needed):  
    - Apply smoothing or morphological filters.  
    - Enforce temporal coherence in multi-year classifications.
 
-By following these steps and applying the equations provided, we can develop a robust forest classifier from earth observation data, ultimately generating annual forest area estimates for monitoring, reporting, and verification.
+By following these steps and applying the equations provided, we can develop a robust forest classifier from Earth observation data. In **Chapter 5**, we detail how to translate this methodology into a structured implementation plan: creating training data for 2020, setting up a Python-based workflow, and validating results before extending to other years.
