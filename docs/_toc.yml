@@ -10,3 +10,4 @@ parts:
       - file: docs/02_data_inventory_sources
       - file: docs/03_data_preparation_preprocessing
       - file: docs/04_modeling_methodology
+      - file: docs/05_implementation_plan
